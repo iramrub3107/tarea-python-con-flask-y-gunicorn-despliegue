@@ -1,5 +1,4 @@
-# Despliegue de una aplicación utilizando Python con Flask y Gunicorn
-# Tarea realizada por Izan Ramos Rubio
+# Despliegue de una aplicación utilizando Python con Flask y Gunicorn | Tarea realizada por Izan Ramos Rubio
 
 ---
 
