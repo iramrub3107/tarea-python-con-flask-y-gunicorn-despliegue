@@ -1,4 +1,4 @@
-<img width="1202" height="683" alt="image" src="https://github.com/user-attachments/assets/1d33c4c0-2123-454a-bb7d-17a288665083" /># Despliegue de una aplicación utilizando Python con Flask y Gunicorn
+# Despliegue de una aplicación utilizando Python con Flask y Gunicorn
 # Tarea realizada por Izan Ramos Rubio
 
 ---
@@ -225,3 +225,27 @@ Dentro del archivo, pondremos el código que aparece en esta captura de pantalla
 Después, recargamos todos los servicios (además de los cambios en el flask_app.service) ejecutando ```sudo systemctl daemon-reload```, y habilitaremos e iniciaremos nuestro servicio adaptado. También comprobaremos su estado por si ha fallado algo al iniciarlo:
 
 <img width="1203" height="676" alt="image" src="https://github.com/user-attachments/assets/23dd6ab3-ae43-4062-a467-b1af503679ea" />
+
+---
+
+Y ahora, vamos a adaptar nuestro archivo app.conf situado en /etc/nginx/sites-available y cambiaremos lo necesario ahí dentro para que nginx funcione con nuestra nueva aplicación:
+
+<img width="1203" height="676" alt="image" src="https://github.com/user-attachments/assets/cbbffd22-7b82-4a29-90eb-9694e0b94bb2" />
+
+Y haremos el enlace simbólico del archivo recién editado y lo pondremos en /etc/nginx/sites-enabled ejecutando ```sudo ln -s /etc/nginx/sites-available/app.conf /etc/nginx/sites-enabled/```
+
+<img width="961" height="716" alt="image" src="https://github.com/user-attachments/assets/7b38e57a-3d0b-4d5e-955c-d0922552c135" />
+
+Además, comprobaremos la sintaxis del fichero ejecutando ```sudo nginx -t``` y reiniciamos el servicio
+
+<img width="961" height="275" alt="image" src="https://github.com/user-attachments/assets/26a3ff63-c333-4f33-8468-8a0ba0924068" />
+
+Ahora nos iremos a nuestro dispositivo anfitrión y hacemos los cambios necesarios en nuestro archivo "hosts". En mi caso, es en /etc/hosts. Pondremos la IP de la VM y los dominios que corresponden
+
+<img width="962" height="541" alt="image" src="https://github.com/user-attachments/assets/e0338cce-e151-459a-ba94-6a0411891c60" />
+
+Y finalmente, entraremos en app.izv o www.app.izv, y comprobamos si nuestra aplicación se ha desplegado correctamente:
+
+<img width="962" height="541" alt="image" src="https://github.com/user-attachments/assets/57d9e955-06f7-4200-afa3-885d406af992" />
+
+Y podremos observar en la captura de pantalla que la aplicación ha sido desplegada con éxito
