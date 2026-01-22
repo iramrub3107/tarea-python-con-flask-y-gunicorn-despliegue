@@ -1,4 +1,4 @@
-# Despliegue de una aplicación utilizando Python con Flask y Gunicorn
+<img width="1202" height="683" alt="image" src="https://github.com/user-attachments/assets/1d33c4c0-2123-454a-bb7d-17a288665083" /># Despliegue de una aplicación utilizando Python con Flask y Gunicorn
 # Tarea realizada por Izan Ramos Rubio
 
 ---
@@ -193,7 +193,7 @@ Ahora, iniciaremos nuestro entorno virtual ejecutando ```pipenv shell```, y obse
 
 ---
 
-A continuación, instalaremos las dependencias que el propio proyecto que hemos clonado incluye en el archivo .txt que tiene este. Para poder instalar estas dependencias, ejecutaremos ```pipenv install -r requirements.txt```
+A continuación, instalaremos las dependencias que el propio proyecto que hemos clonado incluye en el archivo .txt que tiene este. Para poder instalarlas, ejecutaremos ```pipenv install -r requirements.txt```
 requirements.txt es el nombre del archivo con las dependencias. En el caso de que el archivo tenga otro nombre, se cambia la parte de "requirements.txt" por la del nombre del archivo con las dependencias.
 
 <img width="1203" height="677" alt="image" src="https://github.com/user-attachments/assets/4fc50c36-1efb-43d1-a99c-ae3e09c5e0d6" />
@@ -201,3 +201,27 @@ requirements.txt es el nombre del archivo con las dependencias. En el caso de qu
 Después de instalar las propias dependencias del proyecto, pondremos a correr nuestra aplicación iniciando Gunicorn ejecutando ```gunicorn --workers 4 --bind 0.0.0.0:5000 wsgi:app```, y cuando termine de cargar, comprobaremos si todo va bien
 
 <img width="1203" height="677" alt="image" src="https://github.com/user-attachments/assets/ba89cc24-e35b-4f81-9a23-4faf961009c0" />
+
+Una vez iniciado Gunicorn, introduciremos en el navegador la IP de la VM + :5000 (su IP en el puerto 5000) y verificamos si todo va bien
+
+<img width="1202" height="683" alt="image" src="https://github.com/user-attachments/assets/7bb555aa-b20c-4553-ac7b-5eb7248dbf31" />
+
+Como podemos observar en la captura de pantalla, la aplicación funciona correctamente.
+
+---
+
+Ahora haremos el proceso de crear un servicio para que Gunicorn sea uno de estos. Para ello, primero sacaremos la ruta real de Gunicorn ejecutando ```which gunicorn```. Cuando la tengamos, nos saldremos el entorno virtual
+
+<img width="1202" height="678" alt="image" src="https://github.com/user-attachments/assets/6b7818e7-961f-4470-8054-4a8bf3735c55" />
+
+Después, adaptaremos el archivo /etc/systemd/system/flask_app.service que previamente creamos para la aplicación de prueba anterior, para que nginx funcione correctamente con la aplicación en la que estamos trabajando ahora.
+Primero, entramos en la carpeta donde está el archivo, y lo editamos con ```sudo nano flask_app.service```
+
+<img width="1203" height="677" alt="image" src="https://github.com/user-attachments/assets/77ebe29f-478e-4bb9-8422-df32b7d88ef1" />
+
+Dentro del archivo, pondremos el código que aparece en esta captura de pantalla:
+<img width="1200" height="675" alt="image" src="https://github.com/user-attachments/assets/036f3bd1-a888-4139-ae37-269db7b5e28e" />
+
+Después, recargamos todos los servicios (además de los cambios en el flask_app.service) ejecutando ```sudo systemctl daemon-reload```, y habilitaremos e iniciaremos nuestro servicio adaptado. También comprobaremos su estado por si ha fallado algo al iniciarlo:
+
+<img width="1203" height="676" alt="image" src="https://github.com/user-attachments/assets/23dd6ab3-ae43-4062-a467-b1af503679ea" />
