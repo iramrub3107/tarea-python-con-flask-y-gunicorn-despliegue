@@ -94,6 +94,13 @@ Y como se puede observar, la aplicación también se despliega correctamente uti
 
 Ahora, vamos a parar la ejecución de la aplicación para realizar algo que nos servirá bastante más adelante. Ejecutaremos ```which gunicorn``` para poder ver la ruta desde donde se ejecuta Gunicorn y la copiaremos en algún lado para poder pegarla más tarde.
 
+<img width="1203" height="678" alt="image" src="https://github.com/user-attachments/assets/c4515c64-ac39-4dfd-8c9b-f51e0e1fd8a0" />
+
+---
+
+
+
+
 <img width="1323" height="744" alt="image" src="https://github.com/user-attachments/assets/3e285e08-be3e-4361-9973-62b7b5ab217d" />
 
 ---
