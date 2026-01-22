@@ -110,3 +110,16 @@ En él pondremos el contenido que aparece en la captura de pantalla:
 
 <img width="1203" height="676" alt="image" src="https://github.com/user-attachments/assets/1815d4da-cac0-48da-a06d-6a276718b7ff" />
 
+Cuando tengamos configurado nuestro nuevo servicio, ejecutamos ```sudo systemctl daemon-reload``` para que se "añada" el nuevo servicio que acabamos de crear:
+
+<img width="1203" height="676" alt="image" src="https://github.com/user-attachments/assets/7ecc1261-f0e1-4d84-9e03-ed4b5757bb11" />
+
+Y, posteriormente, vamos a habilitar e iniciar nuestro servicio
+
+<img width="1203" height="676" alt="image" src="https://github.com/user-attachments/assets/31ce120b-9e22-4ed8-8f41-d8469ff6d3f5" />
+
+Ahora, vamos a crear un fichero en /etc/nginx/sites-available que se llamará app.conf, en donde tendremos ahí metida la configuración que aparece en la captura de pantalla para que nuestro nginx esté bien configurado para que, más adelante, nuestra aplicación pueda funcionar sin problemas
+
+<img width="1203" height="676" alt="image" src="https://github.com/user-attachments/assets/cf31b324-b897-4e92-bf16-fc8ba3ea4850" />
+
+<img width="1203" height="676" alt="image" src="https://github.com/user-attachments/assets/67073849-bced-4942-9693-c6dd6c19532b" />
