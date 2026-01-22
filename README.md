@@ -122,4 +122,21 @@ Ahora, vamos a crear un fichero en /etc/nginx/sites-available que se llamará ap
 
 <img width="1203" height="676" alt="image" src="https://github.com/user-attachments/assets/cf31b324-b897-4e92-bf16-fc8ba3ea4850" />
 
+Posteriormente, vamos a crear un enlace simbólico de nuestro archivo recién creado que se encontrará en /etc/nginx/sites-enabled. Para ello, ejecutaremos ```sudo ln -s /etc/nginx/sites-available/app.conf /etc/nginx/sites-enabled/```
+
 <img width="1203" height="676" alt="image" src="https://github.com/user-attachments/assets/67073849-bced-4942-9693-c6dd6c19532b" />
+
+Por si acaso, vamos a asegurarnos de que el enlace simbólico se ha creado correctamente
+
+<img width="1203" height="676" alt="image" src="https://github.com/user-attachments/assets/47d17921-452e-4d76-9a18-1f8d06a2cbf0" />
+
+Como se puede observar en la captura de pantalla, mi enlace se ha creado correctamente.
+
+Ahora, comprobaremos que toda la configuración de nginx se ha realizado bien ejecutando ```sudo nginx -t```, y, en el caso de que todo está OK reiniciamos el servicio de nginx y luego revisaremos su estado. Si por algún casual, nginx detecta alguna configuración mal hecha, te lo advertirá y, por ende, tendrás que arreglarlo antes de reiniciar el servidor, ya que, si no revisas la configuración, pueden surgir problemas a la hora de reiniciar el servicio.
+
+<img width="888" height="626" alt="image" src="https://github.com/user-attachments/assets/7005dad5-d005-4d5e-8688-7b9969f9984f" />
+
+Como se puede observar desde la captura de pantalla, al haber ejecutado ```sudo nginx -t```, nginx me ha dicho básicamente que toda mi configuración está bien y, por ende, he reiniciado el sistema y he mirado su estado.
+
+
+
