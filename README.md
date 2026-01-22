@@ -3,7 +3,7 @@
 
 ---
 
-# 1. Despliegue
+# 1. DESPLIEGUE
 
 Para comenzar con nuestro despliegue, primero que todo necesitaremos instalar varios paquetes:
 
@@ -152,5 +152,26 @@ Cuando ya hayamos hecho ese cambio, ahora nos iremos a nuestro dispositivo anfit
 
 Como se puede observar en la captura de pantalla, en ese archivo se ha puesto la IP de la VM más abajo seguido de los dominios correspondientes.
 
+Y con toda las configuraciones que hemos estado realizando, podemos observar que nuestra aplicación funciona correctamente!
 
+<img width="1200" height="515" alt="image" src="https://github.com/user-attachments/assets/63e4778d-7ba3-4adc-b440-24d2473d01b6" />
 
+---
+
+# 2. TAREA DE AMPLIACIÓN
+
+Para empezar con esta tarea de ampliación en la cual tendremos que hacer el mismo proceso que en "Despliegue", pero con un repo de GitHub, vamos a hacer lo siguiente:
+
+Primero que todo, vamos a irnos al directorio /var/www y vamos a clonar este repositorio: **https://github.com/Azure-Samples/msdocs-python-flask-webapp-quickstart**, no sin antes tener instalado git en el caso de que no lo tengamos instalado:
+
+<img width="1202" height="674" alt="image" src="https://github.com/user-attachments/assets/4cc02712-def9-4c0c-aa28-ce7b5b4fd840" />
+
+<img width="1203" height="677" alt="image" src="https://github.com/user-attachments/assets/c90a349a-dc20-44e2-aa5c-4b52fe680575" />
+
+También es necesario instalarse los paquetes que nos habíamos instalado al principio del primer despliegue: python3-pip, pipenv, python-dotenv... Pero como ya están instalados de haber hecho la anterior práctica, no es necesario hacerlo de nuevo.
+
+---
+
+A continuación, haremos que nuestro usuario sea propietario de la carpeta del repo que hemos clonado, y también aplicaremos los permisos necesarios en esta carpeta para que todo el mundo lo pueda leer
+
+<img width="1201" height="676" alt="image" src="https://github.com/user-attachments/assets/4944ff89-7e83-44c4-984d-f5b2ea4b5781" />
