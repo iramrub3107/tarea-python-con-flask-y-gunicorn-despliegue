@@ -24,6 +24,8 @@ en mi caso he tenido que poner justo antes del comando "~/.local/bin/" para que 
 
 <img width="994" height="698" alt="image" src="https://github.com/user-attachments/assets/d355f97d-e483-4822-b32e-5250c7d791d4" />
 
+---
+
 Ahora que ya tenemos nuestros paquetes descargados, vamos a comenzar con la creación de la aplicación.
 Para esto, vamos a crear la carpeta en donde se situará nuestra aplicación. Haremos que nuestro usuario, además de pertenecer al grupo www:data, también sea el propietario de nuestra nueva carpeta, además de que todo el mundo pueda leer esta nueva carpeta.
 Si queremos hacer todo esto, tendremos que ejecutar los siguientes comandos:
@@ -33,6 +35,8 @@ Si queremos hacer todo esto, tendremos que ejecutar los siguientes comandos:
 3. ```sudo chmod -R 775 /var/www/app-despliegue-izan```
 
 <img width="1323" height="744" alt="image" src="https://github.com/user-attachments/assets/cef1bf5a-6878-4547-a00f-40ac6d726058" />
+
+---
 
 Dentro de nuestra nueva carpeta, crearemos un archivo .env que estará oculto:
 
@@ -61,4 +65,20 @@ A continuación, iremos añadiendo el código necesario para cada uno de los dos
 Y después, pondremos este otro código en wsgi.py:
 
 <img width="1321" height="746" alt="image" src="https://github.com/user-attachments/assets/fd478a30-4284-4ba6-8216-17cb461b8702" />
+
+---
+
+Antes de desplegar la aplicación que acabamos de crear, hay que asegurarse de que se pueda ver desde nuestro navegador. Para ello, iremos a la configuración de la máquina virtual desplegada, y entraremos en Configuración > Red > Reenvío de puertos. Ahí dentro, crearemos una nueva regla de reenvío en la que pondremos esta configuración:
+
+<img width="1323" height="745" alt="image" src="https://github.com/user-attachments/assets/4f8db838-236d-4892-8eca-295f0c250b69" />
+
+Esta configuración nos servirá bastante, ya que así, cuando despleguemos nuestra aplicación, la podremos ver desde el localhost en el puerto 5000, tal y como lo hemos configurado.
+
+Una vez tengamos hecha nuestra configuración, toca desplegar nuestra aplicación para ver si funciona. Para ello, ejecutaremos ```flask run --host '0.0.0.0'```, sin olvidarnos de hacerlo teniendo iniciado nuestro entorno virtual:
+
+<img width="1325" height="741" alt="image" src="https://github.com/user-attachments/assets/6b225253-3698-44e1-8906-2e7200e606d7" />
+
+Y como podremos observar, nuestra aplicación se ha desplegado correctamente:
+
+<img width="1323" height="531" alt="image" src="https://github.com/user-attachments/assets/f539b485-4e93-41ae-863b-b82c37831574" />
 
