@@ -98,9 +98,15 @@ Ahora, vamos a parar la ejecución de la aplicación para realizar algo que nos 
 
 ---
 
+A continuación, vamos a iniciar nginx dado a que nos va a ser necesario para desplegar la aplicación más adelante. 
+En el caso de que no tengamos instalado el servicio (cosa que sería algo extraña al desplegar una máquina virtual con Vagrant), nos lo instalaremos ejecutando ```sudo apt install nginx```
+Después de iniciarlo, vamos a comprobar también su estado:
 
+<img width="1203" height="678" alt="image" src="https://github.com/user-attachments/assets/f3fbc96f-3c58-4379-b9c7-a729934c01ae" />
 
+Una vez tengamos iniciado correctamente nginx, vamos a crear un servicio en el cual tendremos ahí "configurado" nuestro Gunicorn para que nuestro systemd lo detecte como un servicio más.
+Este archivo se llamará flask_app.service y se encontrará en la carpeta en donde están todos los demás servicios que tenemos: en /etc/systemd/system
+En él pondremos el contenido que aparece en la captura de pantalla:
 
-<img width="1323" height="744" alt="image" src="https://github.com/user-attachments/assets/3e285e08-be3e-4361-9973-62b7b5ab217d" />
+<img width="1203" height="676" alt="image" src="https://github.com/user-attachments/assets/1815d4da-cac0-48da-a06d-6a276718b7ff" />
 
----
