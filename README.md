@@ -162,7 +162,7 @@ Y con toda las configuraciones que hemos estado realizando, podemos observar que
 
 Para empezar con esta tarea de ampliación en la cual tendremos que hacer el mismo proceso que en "Despliegue", pero con un repo de GitHub, vamos a hacer lo siguiente:
 
-Primero que todo, vamos a irnos al directorio /var/www y vamos a clonar este repositorio: **https://github.com/Azure-Samples/msdocs-python-flask-webapp-quickstart**, no sin antes tener instalado git en el caso de que no lo tengamos instalado:
+Primero que todo, vamos a irnos al directorio /var/www y vamos a clonar (ejecutando git clone <enlace-github>) este repositorio: **https://github.com/Azure-Samples/msdocs-python-flask-webapp-quickstart**, no sin antes tener instalado git en el caso de que no lo tengamos instalado:
 
 <img width="1202" height="674" alt="image" src="https://github.com/user-attachments/assets/4cc02712-def9-4c0c-aa28-ce7b5b4fd840" />
 
@@ -173,5 +173,31 @@ También es necesario instalarse los paquetes que nos habíamos instalado al pri
 ---
 
 A continuación, haremos que nuestro usuario sea propietario de la carpeta del repo que hemos clonado, y también aplicaremos los permisos necesarios en esta carpeta para que todo el mundo lo pueda leer
+Para ello, ejecutaremos dos comandos:
+
+```
+sudo chown -R usuario:www-data /var/www/msdocs-python-flask-webapp-quickstart/
+sudo chmod -R 775 /var/www/msdocs-python-flask-webapp-quickstart/
+```
+Hay que tener en cuenta que, en donde pone "usuario", hay que cambiarlo para que sirva con el usuario del que se disponga.
 
 <img width="1201" height="676" alt="image" src="https://github.com/user-attachments/assets/4944ff89-7e83-44c4-984d-f5b2ea4b5781" />
+
+Dentro del directorio del nuevo proyecto, creamos el archivo oculto .env y pondremos el contenido que se señala en la captura de pantalla:
+
+<img width="1203" height="675" alt="image" src="https://github.com/user-attachments/assets/4d2cdcca-0f2f-45c8-9b54-5d9233c0ff89" />
+
+Ahora, iniciaremos nuestro entorno virtual ejecutando ```pipenv shell```, y observaremos que se nos ha iniciado (recordar que, para confirmar que se ha iniciado, debe de aparecer entre paréntesis el nombre del directorio antes del prompt)
+
+<img width="1203" height="675" alt="image" src="https://github.com/user-attachments/assets/9e6795b8-f7e7-4649-b728-8dd0f19f1dda" />
+
+---
+
+A continuación, instalaremos las dependencias que el propio proyecto que hemos clonado incluye en el archivo .txt que tiene este. Para poder instalar estas dependencias, ejecutaremos ```pipenv install -r requirements.txt```
+requirements.txt es el nombre del archivo con las dependencias. En el caso de que el archivo tenga otro nombre, se cambia la parte de "requirements.txt" por la del nombre del archivo con las dependencias.
+
+<img width="1203" height="677" alt="image" src="https://github.com/user-attachments/assets/4fc50c36-1efb-43d1-a99c-ae3e09c5e0d6" />
+
+Después de instalar las propias dependencias del proyecto, pondremos a correr nuestra aplicación iniciando Gunicorn ejecutando ```gunicorn --workers 4 --bind 0.0.0.0:5000 wsgi:app```, y cuando termine de cargar, comprobaremos si todo va bien
+
+<img width="1203" height="677" alt="image" src="https://github.com/user-attachments/assets/ba89cc24-e35b-4f81-9a23-4faf961009c0" />
