@@ -20,6 +20,45 @@ en mi caso he tenido que poner justo antes del comando "~/.local/bin/" para que 
 
 <img width="1323" height="744" alt="image" src="https://github.com/user-attachments/assets/f6804a75-dd7d-412c-9057-586bb8d31683" />
 
-3. Ahora, nos descargaremos python-dotenv para cargar las variables de entorno ejecutando ```pip3 install python-dotenv```
+3. Finalmente, nos descargaremos python-dotenv para cargar las variables de entorno ejecutando ```pip3 install python-dotenv```
 
 <img width="994" height="698" alt="image" src="https://github.com/user-attachments/assets/d355f97d-e483-4822-b32e-5250c7d791d4" />
+
+Ahora que ya tenemos nuestros paquetes descargados, vamos a comenzar con la creación de la aplicación.
+Para esto, vamos a crear la carpeta en donde se situará nuestra aplicación. Haremos que nuestro usuario, además de pertenecer al grupo www:data, también sea el propietario de nuestra nueva carpeta, además de que todo el mundo pueda leer esta nueva carpeta.
+Si queremos hacer todo esto, tendremos que ejecutar los siguientes comandos:
+
+1. ```sudo mkdir -p /var/www/app-despliegue-izan```. Yo le he puesto ese nombre a la carpeta, pero puede tener cualquier otro nombre.
+2. ```sudo chown -R usuario:www-data /var/www/app-despliegue-izan```. Mi usuario se llama tal cual "usuario", aunque esto se tiene que hacer con el usuario del que se disponga.
+3. ```sudo chmod -R 775 /var/www/app-despliegue-izan```
+
+<img width="1323" height="744" alt="image" src="https://github.com/user-attachments/assets/cef1bf5a-6878-4547-a00f-40ac6d726058" />
+
+Dentro de nuestra nueva carpeta, crearemos un archivo .env que estará oculto:
+
+<img width="1322" height="745" alt="image" src="https://github.com/user-attachments/assets/337e3fdb-27d6-4653-8c60-e1145f9dcc41" />
+
+Y dentro del archivo .env, pondremos estas dos simples líneas:
+
+<img width="1322" height="746" alt="image" src="https://github.com/user-attachments/assets/924ec436-a6d9-4909-b56e-1a1fd46894cf" />
+
+Ahora ejecutaremos el comando ```pipenv shell``` (si es necesario, poner "~/.local/bin/" justo antes del comando). Si todo sale bien, podremos iniciar el entorno virtual de nuestro proyecto, y nos aparecerá entre paréntesis el nombre de nuestro proyecto al inicio del prompt 
+
+<img width="1323" height="746" alt="image" src="https://github.com/user-attachments/assets/54dcd55e-c90f-4e4f-94f4-7558808edade" />
+
+Y cuando tengamos iniciado nuestro entorno virtual, instalaremos Gunicorn y flask; esenciales para nuestra aplicación.
+
+<img width="1324" height="449" alt="image" src="https://github.com/user-attachments/assets/528ce88f-8fcc-443b-8686-fc5a6288d1b0" />
+
+Como ahora mismo no queremos hacer una aplicación demasiado grande, haremos una mucho más simple en la que crearemos solamente dos archivos: **application.py** y **wsgi.py**
+
+<img width="1322" height="746" alt="image" src="https://github.com/user-attachments/assets/844f0a3e-5f7f-44b2-829b-329caf42ad19" />
+
+A continuación, iremos añadiendo el código necesario para cada uno de los dos archivos. Empezando por application.py, pondremos el código que aparece en la siguiente captura de pantalla:
+
+<img width="1323" height="746" alt="image" src="https://github.com/user-attachments/assets/0982eb02-f23b-48a3-954d-6d8884d1f0cc" />
+
+Y después, pondremos este otro código en wsgi.py:
+
+<img width="1321" height="746" alt="image" src="https://github.com/user-attachments/assets/fd478a30-4284-4ba6-8216-17cb461b8702" />
+
