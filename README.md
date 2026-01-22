@@ -74,7 +74,7 @@ Antes de desplegar la aplicación que acabamos de crear, hay que asegurarse de q
 
 Esta configuración nos servirá bastante, ya que así, cuando despleguemos nuestra aplicación, la podremos ver desde el localhost en el puerto 5000, tal y como lo hemos configurado.
 
-Una vez tengamos hecha nuestra configuración, toca desplegar nuestra aplicación para ver si funciona. Para ello, ejecutaremos ```flask run --host '0.0.0.0'```, sin olvidarnos de hacerlo teniendo iniciado nuestro entorno virtual:
+Una vez tengamos hecha nuestra configuración, toca desplegar nuestra aplicación para ver si funciona. Para ello, ejecutaremos ```flask run --host '0.0.0.0'``` para desplegarla usando flask, sin olvidarnos de hacerlo teniendo iniciado nuestro entorno virtual:
 
 <img width="1325" height="741" alt="image" src="https://github.com/user-attachments/assets/6b225253-3698-44e1-8906-2e7200e606d7" />
 
@@ -82,3 +82,18 @@ Y como podremos observar, nuestra aplicación se ha desplegado correctamente:
 
 <img width="1323" height="531" alt="image" src="https://github.com/user-attachments/assets/f539b485-4e93-41ae-863b-b82c37831574" />
 
+Ya que flask funciona correctamente, ahora toca hacer lo mismo pero con Gunicorn. Para ello, ejecutaremos ```gunicorn --workers 4 --bind 0.0.0.0:5000 wsgi:app```, haciéndolo teniendo iniciado nuestro entorno virtual:
+
+<img width="1323" height="744" alt="image" src="https://github.com/user-attachments/assets/2a8c26b9-18cd-40ab-bb5d-b26809969d13" />
+
+Ahora comprobaremos si funciona...
+
+<img width="1323" height="589" alt="image" src="https://github.com/user-attachments/assets/10996eff-49db-4559-a8a3-7ed7bcf79bca" />
+
+Y como se puede observar, la aplicación también se despliega correctamente utilizando Gunicorn.
+
+Ahora, vamos a parar la ejecución de la aplicación para realizar algo que nos servirá bastante más adelante. Ejecutaremos ```which gunicorn``` para poder ver la ruta desde donde se ejecuta Gunicorn y la copiaremos en algún lado para poder pegarla más tarde.
+
+<img width="1323" height="744" alt="image" src="https://github.com/user-attachments/assets/3e285e08-be3e-4361-9973-62b7b5ab217d" />
+
+---
