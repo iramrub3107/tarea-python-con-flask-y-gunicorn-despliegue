@@ -138,5 +138,19 @@ Ahora, comprobaremos que toda la configuración de nginx se ha realizado bien ej
 
 Como se puede observar desde la captura de pantalla, al haber ejecutado ```sudo nginx -t```, nginx me ha dicho básicamente que toda mi configuración está bien y, por ende, he reiniciado el sistema y he mirado su estado.
 
+Para que podamos ver bien la aplicación, vamos a tener que cambiar la configuración de la red de la VM. Para ello, simplemente iremos a la VM e iremos a Configuración > Red y cambiaremos la Red NAT por Adaptador Puente. Este cambio se tiene que realizar ya que, después de configurar el archivo /etc/hosts de la máquina anfitriona, al intentar acceder a la aplicación se "queda cargando en bucle". Es decir, resuelve el nombre de la aplicación (que es app.izv) pero la conexión HTTP nunca terminará de completarse, formando ese "bucle". Además, en la Red NAT no podremos sacarle la IP a la VM por estar en la Red NAT
+
+<img width="1203" height="678" alt="image" src="https://github.com/user-attachments/assets/32ec1075-a567-4bc4-8b79-92cfcb3db398" />
+
+Y ahora, después de reiniciar la VM, podremos observar que al ejecutar ```ip a```, ya podremos ver que esta ya tiene dirección IP.
+
+<img width="1203" height="677" alt="image" src="https://github.com/user-attachments/assets/3b7af4d3-f17d-4dbe-91c5-f844b3b6dfa0" />
+
+Cuando ya hayamos hecho ese cambio, ahora nos iremos a nuestro dispositivo anfitrión y hacemos los cambios necesarios en nuestro archivo "hosts". En mi caso, es en /etc/hosts:
+
+<img width="1203" height="677" alt="image" src="https://github.com/user-attachments/assets/0fb40280-b5ec-4fe5-9242-cd00573cc930" />
+
+Como se puede observar en la captura de pantalla, en ese archivo se ha puesto la IP de la VM más abajo seguido de los dominios correspondientes.
+
 
 
